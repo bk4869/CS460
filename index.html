@@ -15,7 +15,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="main.css">
 
   </head>
 
@@ -47,11 +47,11 @@
     <div class="container">
       
       <div class="row">
-        <div class="lead col-lg-12 alert alert-primary" role="alert">
+        <div class="lead col-lg-12 alert alert-primary mt-2" role="alert">
           This is the demo page for CS460 HW1
         </div>
-        <div class="col-lg-12 text-center">
-          <h1 class="mt-5">Home network upgrade project</h1>
+        <div class="col-lg-12">
+          <h1 class="mt-2">Home network upgrade project</h1>
         </div>
       </div>
       <div class="row">
@@ -62,16 +62,17 @@
             My home network system in China was a 100Megabit(100Mbps) base with wireless supported network environment, after upgraded to 120Mbps network from ISP the old network devices is not able handle it anymore, so I decided to upgraded the whole network system during summer break. 
           </p>
           <h2 class="mt-4">Problems</h2>
-          <ol class="mt-2">
+          <ul class="mt-2">
               <li>Needs more bandwidth to handle LAN traffic</li>
               <li>WiFi is not able to cover the entire house</li>
               <li>Hard to troubleshooting when I am not in China</li>
               <li>My family looks for more wire connection</li>
-          </ol>
+          </ul>
           <h2 class="mt-4">Solution</h2>
           <p>
             First thing first, upgraded the switch to fully gigabit and POE+ so it's able to handle the traffic, and then I used two FIT Access Point to cover the entire house and control by the wireless controller(WLC), the reason I use WLC is because it's allow me to config and monitor both ap and AP roaming. Also connect few new Cat6 cable to my family's bathroom so they prefer wire. And finally I setup a SSLVPN so I can remotely control my network anywhere in the world if there is internet. 
           </p>
+          <h2 class="mt-4">Devices List</h2>
           <table class="table table-hover">
           <thead class="thead-light">
           <tr>
@@ -108,6 +109,15 @@
             </tr>
         </tbody>
         </table>
+        <p>
+            Those may looks overkill to a home network, but let me show you some advantages about it.
+        </p>
+        <ol class="mt-2">
+              <li>Fully gigabit network allow more services available such as VoIP and CCTV system</li>
+              <li>H3C firewall provided VPN for remote access, not just SSL but more</li>
+              <li>FIT AP and WLC allow truly seamless roaming without loss connection when switch between AP</li>
+              <li>Stable, important than anything</li>
+        </ol>    
         </div>
       </div>
         
