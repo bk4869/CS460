@@ -6,6 +6,7 @@ var networkArr = [0,0,0,0];
 var minIP = undefined;
 var maxIP = undefined;
 var network = undefined;
+var ipTypr = undefined;5
 
 /**
  * Verify IP Type(Public/Private)
@@ -25,7 +26,7 @@ function ipType(ipF, ipS){
     }else if(ipF == null){
         return 'Null';
     }else {
-        return ipF;
+        return 'Pubic IP Address';
     }
 }
 
@@ -149,7 +150,7 @@ function setCharAt(str,index,chr) {
 
 
 
-$('div').submit(function (event) {
+$('#ipInfo').submit(function (event) {
     event.preventDefault();
     //get the ip address  and mask from text
     var ipp1 = $('#ip1').val().trim();
@@ -162,10 +163,37 @@ $('div').submit(function (event) {
     //var number = addCalc(mask);
     ipRange(ipp1,ipp2,ipp3,ipp4,mask);
     //ipRange(192,168,100,1,24);
-    //var p = document.getElementById('resultReturn');
-    var ansMin = minArr[0]+'.'+minArr[1]+'.'+minArr[2]+'.'+minArr[3];
-    var ansMax = maxArr[0]+'.'+maxArr[1]+'.'+maxArr[2]+'.'+maxArr[3];
-    $("#resultReturn").empty();
-    $('#resultReturn').html(minIP+' '+maxIP);
-    $('#resultReturn').html(ansMin+' '+ansMax+' '+minIP+' '+maxIP);
+    if(ipp1.length==0 || ipp2.length==0 || ipp3.length==0 || ipp4.length==0 || mask==0){
+        alert('Please Enter Current IP');
+    }else if(ipp1>255 ||ipp2>255 || ipp3>255 || ipp4>255 || mask>32){
+        alert('IP Address Should <= 255 and Network Mask should <= 32');
+    }else if(isNaN(ipp1+ipp2+ipp3+ipp4+mask)){
+        alert('Please Enter All Integer !');
+    }else if(mask>=24 || mask==16 || mask==24){
+        $("#resultReturn").empty();
+        //$('#resultReturn').html(minIP+' '+maxIP); 
+        $('#resultReturn').html(
+            '<h5 class="mt-5">Network: '+minIP+'/'+mask+'</h5>'+
+            '<h5>Min Address: '+minIP+'(Network)</h5>'+
+            '<h5>Max Address: '+maxIP+'(Broadcast Address)</h5>'+
+            '<h5>Hosts Number: '+(addCalc(mask)-2)+'</h5>'+
+            '<h5>IP Type: '+ipType(ipp1,ipp2)+'</h5>'
+        ); 
+
+    }else {
+        var ansMin = minArr[0]+'.'+minArr[1]+'.'+minArr[2]+'.'+minArr[3];
+        var ansMax = maxArr[0]+'.'+maxArr[1]+'.'+maxArr[2]+'.'+maxArr[3];
+        
+        $('#resultReturn').html(
+            '<h5 class="mt-5">Network: '+ansMin+'/'+mask+'</h5>'+
+            '<h5>Min Address: '+ansMin+'(Network)</h5>'+
+            '<h5>Max Address: '+ansMax+'(Broadcast Address)</h5>'+
+            '<h5>Hosts Number: '+(addCalc(mask)-2)+'</h5>'+
+            '<h5>IP Type: '+ipType(ipp1,ipp2)+'</h5>'
+        );
+        
+    }
+
+
+    
 });
