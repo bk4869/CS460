@@ -49,22 +49,29 @@ function addCalc(mask){
 function ipRange(ip1,ip2,ip3,ip4,mask){
     //var maxCount = 0;
     var avaAddr = addCalc(mask);
-    if(mask===24){
+    minIP = 0;
+    maxIP = 0;
+    console.log('PassingInit');
+
+    if(mask==24){
         minIP = ip1+'.'+ip2+'.'+ip3+'.'+0;
         maxIP = ip1+'.'+ip2+'.'+ip3+'.'+255; 
-        alert('test123');
-    }else if(mask===16){
+        console.log('PassingFixed');
+    }
+    if(mask==16){
         minIP = ip1+'.'+ip2+'.'+0+'.'+0;
         maxIP = ip1+'.'+ip2+'.'+255+'.'+255; 
-    }else if(ask===8){
+    }
+    if(mask==8){
         minIP = ip1+'.'+0+'.'+0+'.'+0;
         maxIP = ip1+'.'+255+'.'+255+'.'+255; 
-    }else if(mask>24){
+    }
+    if(mask>24){
         var i;
+        console.log('Passing>24');
         for(i = 0; i < 256; i = i + avaAddr)
         {
-            minIP = 0;
-            maxIP = 0; 
+             
 
             if(ip4 < i){
                 minIP = ip1+'.'+ip2+'.'+ip3+'.'+(i-avaAddr);
@@ -76,53 +83,69 @@ function ipRange(ip1,ip2,ip3,ip4,mask){
                 break;
             }
         }
-    }else{
+    }
+    if(mask<24){
+        console.log('Passing<24');
         //To binary
-        var ip1B = ip1.toString(2);
-        var ip2B = ip2.toString(2);
-        var ip3B = ip3.toString(2);
-        var ip4B = ip4.toString(2);
+        var ip1B = (+ip1).toString(2);
+        var ip2B = (+ip2).toString(2);
+        var ip3B = (+ip3).toString(2);
 
-        if(mask<=8){
-           var change = 8-mask;
-           minArr[0] = parseInt(binaryZero(ip1B,change),2);
-           maxArr[0] = binaryOne(ip1B,change)
+        if(mask<8){
+           console.log('Passing<8');
+           var wildcard8 = 8-mask;
+           minArr[0] = parseInt(binaryModify(ip1B,0,wildcard8),2); //Return as Dec
+           maxArr[0] = parseInt(binaryModify(ip1B,1,wildcard8),2);
            maxArr[1] = 255;
            maxArr[2] = 255;
            maxArr[3] = 255;
-        }else if(mask<=16){
-
+        }else if(mask<16 && mask >8){
+            console.log('Passing<16');
+            var wildcard16 = 16-mask;
+            minArr[0] = ip1;
+            maxArr[0] = ip1;
+            minArr[1] = parseInt(binaryModify(ip2B,0,wildcard16),2);
+            maxArr[1] = parseInt(binaryModify(ip2B,1,wildcard16),2);
+            maxArr[2] = 255;
+            maxArr[3] = 255;
+            console.log(ip1B+"."+ip2B+"."+ip3B);
+        }else if(mask<24 && mask>16){
+            console.log('Passing<24');
+            var wildcard24 = 24-mask;
+            minArr[0] = ip1;
+            maxArr[0] = ip1;
+            minArr[1] = ip2;
+            maxArr[1] = ip2;
+            minArr[2] = parseInt(binaryModify(ip3B,0,wildcard24),2);
+            maxArr[2] = parseInt(binaryModify(ip3B,1,wildcard24),2);
+            maxArr[3] = 255;
         }
 
      }
     
 }
+
 /**
- * Change 1 to 0
- * @param {*} binary needs to change
- * @param {*} number of zero need for tail
+ * Modify the binary from 0 to 1 or 1 to 0
  */
-function binaryZero(binary,number){
-
-    let zero = Math.pow(10,number);
-    let resultBin = Math.floor(binary/zero) * zero;
-    let result = parseInt(resultBin,2)  //To Dec
-
-    return result;
+ function binaryModify(bin,replace,num){
+     var str = '' + bin;  //conv to str
+     var strPointer = str.length-1;
+     for(var i=0;i<num;i++){
+          str = setCharAt(str,strPointer,replace);
+          strPointer--;
+     }
+     return Number(str);
  }
+/**
+ * Set Char at String Helper
+ */
+function setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substr(0,index) + chr + str.substr(index+1);
+}
 
- /**
-  * Change 0 to 1
-  * return Dec
-  */
- function binaryOne(binary,number){
 
-    let zero = Math.pow(10,number);
-    let resultBin = parseInt(Math.floor(binary/zero)*zero,2);
-    let result = resultDec + Math.pow(2,number); 
-
-    return result-1;
- }
 
 
 
@@ -134,12 +157,15 @@ $('div').submit(function (event) {
     var ipp3 = $('#ip3').val().trim();
     var ipp4 = $('#ip4').val().trim();
     var mask = $('#mask').val().trim();
-
+    console.log('Passing: '+ipp1+'.'+ipp2+'.'+ipp3+'.'+ipp4);
     //var result = ipType(ipp1,ipp2);
     //var number = addCalc(mask);
     ipRange(ipp1,ipp2,ipp3,ipp4,mask);
+    //ipRange(192,168,100,1,24);
     //var p = document.getElementById('resultReturn');
-    var ansMax = minArr[0]+'.'+minArr[1]+'.'+minArr[2]+'.'+minArr[3];
+    var ansMin = minArr[0]+'.'+minArr[1]+'.'+minArr[2]+'.'+minArr[3];
+    var ansMax = maxArr[0]+'.'+maxArr[1]+'.'+maxArr[2]+'.'+maxArr[3];
     $("#resultReturn").empty();
     $('#resultReturn').html(minIP+' '+maxIP);
+    $('#resultReturn').html(ansMin+' '+ansMax+' '+minIP+' '+maxIP);
 });
