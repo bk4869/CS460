@@ -138,7 +138,7 @@ function ipRange(ip1,ip2,ip3,ip4,mask){
      return Number(str);
  }
 /**
- * Set Char at String Helper
+ * Char -> String Helper Method
  */
 function setCharAt(str,index,chr) {
     if(index > str.length-1) return str;
