@@ -203,7 +203,7 @@ $('#ipInfo').submit(function (event) {
             //'<h5>IP Type: '+ipType(ipp1,ipp2)+'</h5>'
 
             '<ul class="list-group mt-5">'+
-                '<li class="list-group-item">Network: '+ansMax+'/'+mask+'</li>'+
+                '<li class="list-group-item">Network: '+ansMin+'/'+mask+'</li>'+
                 '<li class="list-group-item">Min Address: '+ansMin+'(Network)</li>'+
                 '<li class="list-group-item">Max Address: '+ansMax+'(Broadcast Address)</li>'+
                 '<li class="list-group-item">Hosts Number: '+(addCalc(mask)-2)+'</li>'+
