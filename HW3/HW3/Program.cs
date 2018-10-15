@@ -27,7 +27,7 @@ namespace HW3
 {
     class Program
     {
-        static LinkedList<string> generateBinaryRepresentationList(int n)
+        static LinkedList<string> GenerateBinaryRepresentationList(int n)
         {
             LinkedQueue<StringBuilder> q = new LinkedQueue<StringBuilder>();
 
@@ -40,7 +40,7 @@ namespace HW3
 
             q.Push(new StringBuilder("1"));
 
-            while (n --> 0)
+            while (n-- > 0)
             {
                 StringBuilder sb = q.Pop();
                 output.AddLast(sb.ToString());
@@ -77,7 +77,7 @@ namespace HW3
                 return;
             }
 
-            LinkedList<string> output = generateBinaryRepresentationList(n);
+            LinkedList<string> output = GenerateBinaryRepresentationList(n);
 
             int maxLength = output.Last().Length;
 
