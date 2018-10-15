@@ -4,6 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+///CS460 HW#3
+///YUMIN CHEN
+
+/// <summary>
+/// Original by Sumit Ghosh "An Interesting Method to Generate Binary Numbers from 1 to n"
+/// </summary>
+
+///Print the binary representation of all numbers from 1 up to n.
+///This is accomplished by using a FIFO queue to perform a level
+///order(i.e.BFS) traversal of a virtual binary tree that
+///looks like this:
+///                 1
+///             /       \
+///            10       11
+///           /  \     /  \
+///         100  101  110  111
+///          etc.
+/// and then storing each "value" in a list as it is "visited".
+
 namespace HW3
 {
     class Program

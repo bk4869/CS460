@@ -4,6 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// A Singly Linked FIFO Queue.  
+/// From Dale, Joyce and Weems "Object-Oriented Data Structures Using Java"
+/// Modified for CS 460 HW3
+/// 
+/// See QueueInterface.java for documentation
+/// </summary>
+
 namespace HW3
 {
     class LinkedQueue<T> : IQueueInterface<T>
