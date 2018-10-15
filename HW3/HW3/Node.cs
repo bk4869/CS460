@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Singly linked node class.
+/// </summary>
+
 namespace HW3
 {
     class Node<T>
