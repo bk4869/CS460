@@ -9,11 +9,11 @@ namespace HW3
     interface IQueueInterface<T>
     {
 
-        T push(T element);
+        T Push(T element);
 
-        T pop();
+        T Pop();
 
-        bool isEmpty();
+        bool IsEmpty();
         
     }
 }

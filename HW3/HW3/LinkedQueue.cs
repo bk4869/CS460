@@ -18,7 +18,7 @@ namespace HW3
             rear = null;
         }
 
-        public bool isEmpty()
+        public bool IsEmpty()
         {
             if(front == null & rear == null)
             {
@@ -30,10 +30,10 @@ namespace HW3
             }
         }
 
-        public T pop()
+        public T Pop()
         {
             T tmp = default(T);
-            if (isEmpty())
+            if (IsEmpty())
             {
                 throw new QueueUnderflowException("The queue was empty when pop was invoked.");
             }else if(front == rear)
@@ -50,12 +50,12 @@ namespace HW3
             return tmp;
         }
 
-        public T push(T element)
+        public T Push(T element)
         {
             if (element == null)
             {
                 throw new NullReferenceException();
-            }else if(isEmpty())
+            }else if(IsEmpty())
             {
                 Node<T> tmp = new Node<T>(element, null);
                 rear = front = tmp;
