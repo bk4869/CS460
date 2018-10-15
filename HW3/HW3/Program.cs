@@ -8,6 +8,12 @@ namespace HW3
 {
     class Program
     {
+        static LinkedList<string> generateBinaryRepresentationList(int n)
+        {
+
+        }
+
+
         static void Main(string[] args)
         {
         }

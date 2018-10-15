@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace HW3
 {
-    interface QueueInterface
+    interface IQueueInterface<T>
     {
+
+        T push(T element);
+
+        T pop();
+
+        bool isEmpty();
+        
     }
 }

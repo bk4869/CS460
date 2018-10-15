@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace HW3
 {
-    class QueueUnderflowException
+    public class QueueUnderflowException : SystemException
     {
+        public QueueUnderflowException() : base()
+        {
+
+        }
+
+        public QueueUnderflowException(string message) : base(message)
+        {
+          
+        }
+
     }
 }
