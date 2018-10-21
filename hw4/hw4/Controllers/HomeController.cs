@@ -27,8 +27,52 @@ namespace hw4.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Converter()
         {
+            string testInput = Request.QueryString["miles"];
+            double inputMiles = 0;
+
+            ///In case it's empty input.
+            if (!String.IsNullOrEmpty(testInput))
+            {
+                inputMiles = Convert.ToDouble(testInput); 
+            }
+             
+            string inputUnit = Request.QueryString["metricUnit"];
+
+            double resultNum = 0;
+            string resultUnit = null;
+
+            string resultDisplay = null;
+
+            if (inputMiles != 0)
+            {
+                if (inputUnit == "millimeters")
+                {
+                    resultNum = inputMiles * 1609344;
+                }
+                else if (inputUnit == "centimeters")
+                {
+                    resultNum = inputMiles * 160934.4;
+                }
+                else if (inputUnit == "meters")
+                {
+                    resultNum = inputMiles * 1609.344;
+                }
+                else if (inputUnit == "kilometers")
+                {
+                    resultNum = inputMiles * 1.609344;
+                }
+
+                resultUnit = inputUnit;
+                resultDisplay = inputMiles + " miles is equal to " + resultNum + " " + resultUnit; 
+            }
+           
+
+
+            ViewData["result"] = resultDisplay;
+
             return View();
         }
 
