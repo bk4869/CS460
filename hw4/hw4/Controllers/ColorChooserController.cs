@@ -13,5 +13,12 @@ namespace hw4.Controllers
         {
             return View();
         }
+
+
+        [HttpPost]
+        public ActionResult ColorChooser(string c1, string c2)
+        {
+            return View();
+        }
     }
 }
