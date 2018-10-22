@@ -30,14 +30,7 @@ namespace hw4.Controllers
         [HttpGet]
         public ActionResult Converter()
         {
-            string testInput = Request.QueryString["miles"];
-            double inputMiles = 0;
-
-            ///In case it's empty input.
-            if (!String.IsNullOrEmpty(testInput))
-            {
-                inputMiles = Convert.ToDouble(testInput); 
-            }
+            double inputMiles = Convert.ToDouble(Request.QueryString["miles"]);
              
             string inputUnit = Request.QueryString["metricUnit"];
 
@@ -68,17 +61,11 @@ namespace hw4.Controllers
                 resultUnit = inputUnit;
                 resultDisplay = inputMiles + " miles is equal to " + resultNum + " " + resultUnit; 
             }
-           
-
 
             ViewData["result"] = resultDisplay;
 
             return View();
         }
 
-        public ActionResult ColorChooser()
-        {
-            return View();
-        }
     }
 }
