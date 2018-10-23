@@ -27,18 +27,23 @@ namespace hw4.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Convert Miles to Metric
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Converter()
         {
+            //Get user input
             double inputMiles = Convert.ToDouble(Request.QueryString["miles"]);
-             
             string inputUnit = Request.QueryString["metricUnit"];
 
+            //Init result variables 
             double resultNum = 0;
             string resultUnit = null;
-
             string resultDisplay = null;
 
+            //Finding the right Metric and count the result
             if (inputMiles != 0)
             {
                 if (inputUnit == "millimeters")
@@ -62,6 +67,7 @@ namespace hw4.Controllers
                 resultDisplay = inputMiles + " miles is equal to " + resultNum + " " + resultUnit; 
             }
 
+            //Return front end
             ViewData["result"] = resultDisplay;
 
             return View();

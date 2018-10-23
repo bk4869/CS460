@@ -9,29 +9,29 @@
     <h2>Create a New Color</h2>
 
     <p>Please enter colors in HTML hexadecimal format: #AABBCC</p>
-
+    
+    @*Here is where  back end get and set the data*@
     @using (Html.BeginForm("ColorChooser", "ColorChooser", FormMethod.Post, new { id = "inputForm", @class = "colorForm" }))
     {
+        @*Use HTML helper to create user input space*@
         <div class="form-group">
             @Html.Label("inputColor1", "FirstColor: ")
             @Html.TextBox("inputColor1", null, new { @class = "form-control", @pattern = "#[0-9A-Fa-f]{3,6}", @placeholder = "First Color", required = "required" })
         </div>
-
         <div class="form-group">
             @Html.Label("inputColor2", "SecondColor: ")
             @Html.TextBox("inputColor2", null, new { @class = "form-control", @pattern = "#[0-9A-Fa-f]{3,6}", @placeholder = "Second Color", required = "required" })
         </div>
         <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
 
-
-        <br />
-        <br />
-        <div class="row ">
-
+        @*Result from back end, the div will hidden by default*@
+        <div class="row" style="display:@ViewBag.hidden">
+            <br />
+            <br />
             <div class="col-sm-2 border" style="background-color:@ViewBag.color1"></div>
-            <h3 class="col-sm-2">+</h3>
+            <h3 class="col-sm-2 noWidth">+</h3>
             <div class="col-sm-2 border" style="background-color:@ViewBag.color2"></div>
-            <h3 class="col-sm-2">=</h3>
+            <h3 class="col-sm-2 noWidth">=</h3>
             <div class="col-sm-2 border" style="background-color:@ViewBag.newColor"></div>
         </div>
     }

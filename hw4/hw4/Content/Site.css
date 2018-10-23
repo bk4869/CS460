@@ -13,7 +13,7 @@
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+    white-space:normal
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -24,7 +24,11 @@ textarea {
 }
 
 .border {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.noWidth{
+    width: 50px;
 }

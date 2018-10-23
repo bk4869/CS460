@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace hw4.Controllers
 {
@@ -18,6 +19,7 @@ namespace hw4.Controllers
 
         public ActionResult ColorChooser()
         {
+            ViewBag.hidden = "none";
             return View();
         }
 
@@ -35,11 +37,15 @@ namespace hw4.Controllers
             hexColor1 = Request.Form["inputColor1"];
             hexColor2 = Request.Form["inputColor2"];
 
-
-
             //Create input Color instance from HTML Hex
             Color color1 = ColorTranslator.FromHtml(hexColor1);
             Color color2 = ColorTranslator.FromHtml(hexColor2);
+
+            //Check if user inputs are empty
+            if(!(hexColor1 == null || hexColor2 == null))
+            {
+                ViewBag.hidden = "normal";
+            }
 
             //Initial the four properties of result Color. 
             int newColorA = 0;
