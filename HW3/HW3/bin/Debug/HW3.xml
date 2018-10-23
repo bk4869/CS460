@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HW3</name>
+    </assembly>
+    <members>
+        <member name="M:HW3.IQueueInterface`1.Push(`0)">
+            <summary>
+            Add an element to the rear of the queue
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HW3.IQueueInterface`1.Pop">
+            <summary>
+             Remove and return the front element.
+            </summary>
+            <returns></returns>
+            the element that was enqueued
+        </member>
+        <member name="M:HW3.IQueueInterface`1.IsEmpty">
+            <summary>
+            Test if the queue is empty
+            </summary>
+            <returns></returns>
+            true if the queue is empty; otherwise false
+        </member>
+    </members>
+</doc>
