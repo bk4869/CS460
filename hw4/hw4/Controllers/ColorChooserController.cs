@@ -30,11 +30,14 @@ namespace hw4.Controllers
         [HttpPost]
         public ActionResult ColorChooser(string hexColor1, string hexColor2)
         {
+
             //Hex color input from user.
             hexColor1 = Request.Form["inputColor1"];
             hexColor2 = Request.Form["inputColor2"];
 
-            //Create Color instance from HTML Hex
+
+
+            //Create input Color instance from HTML Hex
             Color color1 = ColorTranslator.FromHtml(hexColor1);
             Color color2 = ColorTranslator.FromHtml(hexColor2);
 
@@ -43,8 +46,9 @@ namespace hw4.Controllers
             int newColorR = 0;
             int newColorG = 0;
             int newColorB = 0;
+       
 
-
+            //Find the new color
             if(color1.A + color2.A >= 255)
             {
                 newColorA = 255;
@@ -80,8 +84,16 @@ namespace hw4.Controllers
                 newColorB = color1.B + color2.B;
             }
 
+            //Hex of new Color.
+            Color newColor = Color.FromArgb(newColorA, newColorR, newColorG, newColorB);
+            string newColorHex = ColorTranslator.ToHtml(newColor);
 
-
+            //Ready to View
+            ViewBag.color1 = hexColor1;
+            ViewBag.color2 = hexColor2;
+            ViewBag.newColor = newColorHex;
+            
+ 
             return View();
         }
     }
