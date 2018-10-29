@@ -18,21 +18,23 @@ namespace hw5.Models
         [Required, StringLength(20)]
         public string LastName { get; set; }
 
-        [Required]
-        public int PhoneNumber { get; set; }
+        [Required, StringLength(12)]
+        public string PhoneNumber { get; set; }
 
         [Required]
         public string ApartName { get; set; }
 
         [Required]
-        public int UninNum { get; set; }
+        public int UnitNum { get; set; }
 
-        public string CurrTime
+        [Required]
+        public bool Permission { get; set; }
+
+        private DateTime date = DateTime.Now;
+        public DateTime CurrTime
         {
-            get
-            {
-               return DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-            }
+            get { return date; }
+            set { date = value; }
         }
     }
 }

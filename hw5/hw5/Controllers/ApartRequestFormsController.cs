@@ -13,7 +13,7 @@ namespace hw5.Controllers
 {
     public class ApartRequestFormsController : Controller
     {
-        private FormContext db = new FormContext();
+        private ApartRequestFormContext db = new ApartRequestFormContext();
 
         // GET: ApartRequestForms
         public ActionResult Index()
@@ -47,7 +47,7 @@ namespace hw5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,PhoneNumber,ApartName,UninNum")] ApartRequestForm apartRequestForm)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,PhoneNumber,ApartName,UnitNum,Permission,CurrTime")] ApartRequestForm apartRequestForm)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace hw5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,PhoneNumber,ApartName,UninNum")] ApartRequestForm apartRequestForm)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,PhoneNumber,ApartName,UnitNum,Permission,CurrTime")] ApartRequestForm apartRequestForm)
         {
             if (ModelState.IsValid)
             {

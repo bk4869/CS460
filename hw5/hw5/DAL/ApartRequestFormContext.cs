@@ -7,9 +7,9 @@ using hw5.Models;
 
 namespace hw5.DAL
 {
-    public class FormContext : DbContext
+    public class ApartRequestFormContext : DbContext
     {
-        public FormContext() : base("name=ApartDB")
+        public ApartRequestFormContext() : base("name=RequestDB")
         {
 
         }

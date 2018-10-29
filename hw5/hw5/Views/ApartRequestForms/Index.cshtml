@@ -24,7 +24,13 @@
             @Html.DisplayNameFor(model => model.ApartName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UninNum)
+            @Html.DisplayNameFor(model => model.UnitNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Permission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrTime)
         </th>
         <th></th>
     </tr>
@@ -44,7 +50,13 @@
             @Html.DisplayFor(modelItem => item.ApartName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UninNum)
+            @Html.DisplayFor(modelItem => item.UnitNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Permission)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrTime)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
