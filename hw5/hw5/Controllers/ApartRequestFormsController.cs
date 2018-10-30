@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,19 +17,19 @@ namespace hw5.Controllers
         private ApartRequestFormContext db = new ApartRequestFormContext();
 
         // GET: ApartRequestForms
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.ApartRequestForm.ToList());
+            return View(await db.ApartRequestForm.ToListAsync());
         }
 
         // GET: ApartRequestForms/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApartRequestForm apartRequestForm = db.ApartRequestForm.Find(id);
+            ApartRequestForm apartRequestForm = await db.ApartRequestForm.FindAsync(id);
             if (apartRequestForm == null)
             {
                 return HttpNotFound();
@@ -47,12 +48,12 @@ namespace hw5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,PhoneNumber,ApartName,UnitNum,Permission,CurrTime")] ApartRequestForm apartRequestForm)
+        public async Task<ActionResult> Create([Bind(Include = "ID,FirstName,LastName,PhoneNumber,ApartName,Details,UnitNum,Permission,CurrTime")] ApartRequestForm apartRequestForm)
         {
             if (ModelState.IsValid)
             {
                 db.ApartRequestForm.Add(apartRequestForm);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +61,13 @@ namespace hw5.Controllers
         }
 
         // GET: ApartRequestForms/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApartRequestForm apartRequestForm = db.ApartRequestForm.Find(id);
+            ApartRequestForm apartRequestForm = await db.ApartRequestForm.FindAsync(id);
             if (apartRequestForm == null)
             {
                 return HttpNotFound();
@@ -79,25 +80,25 @@ namespace hw5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,PhoneNumber,ApartName,UnitNum,Permission,CurrTime")] ApartRequestForm apartRequestForm)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,FirstName,LastName,PhoneNumber,ApartName,Details,UnitNum,Permission,CurrTime")] ApartRequestForm apartRequestForm)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(apartRequestForm).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(apartRequestForm);
         }
 
         // GET: ApartRequestForms/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApartRequestForm apartRequestForm = db.ApartRequestForm.Find(id);
+            ApartRequestForm apartRequestForm = await db.ApartRequestForm.FindAsync(id);
             if (apartRequestForm == null)
             {
                 return HttpNotFound();
@@ -108,11 +109,11 @@ namespace hw5.Controllers
         // POST: ApartRequestForms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            ApartRequestForm apartRequestForm = db.ApartRequestForm.Find(id);
+            ApartRequestForm apartRequestForm = await db.ApartRequestForm.FindAsync(id);
             db.ApartRequestForm.Remove(apartRequestForm);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

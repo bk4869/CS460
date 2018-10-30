@@ -9,7 +9,7 @@ namespace hw5.DAL
 {
     public class ApartRequestFormContext : DbContext
     {
-        public ApartRequestFormContext() : base("name=RequestDB")
+        public ApartRequestFormContext() : base("name=RequestFormDB")
         {
 
         }

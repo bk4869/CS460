@@ -25,6 +25,9 @@ namespace hw5.Models
         public string ApartName { get; set; }
 
         [Required]
+        public string Details { get; set; }
+
+        [Required]
         public int UnitNum { get; set; }
 
         [Required]
