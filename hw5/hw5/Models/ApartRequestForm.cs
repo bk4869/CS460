@@ -9,9 +9,16 @@ namespace hw5.Models
 {
     public class ApartRequestForm
     {
+
+        /// <summary>
+        /// Primary KEY Modeling
+        /// </summary>
         [Key]
         public int ID { get; set; }
 
+        /// <summary>
+        /// DB Attributes Modeling
+        /// </summary>
         [Required, StringLength(20)]
         public string FirstName { get; set; }
 
@@ -33,6 +40,9 @@ namespace hw5.Models
         [Required]
         public bool Permission { get; set; }
 
+        /// <summary>
+        /// Giving Current Time when request Submit
+        /// </summary>
         private DateTime date = DateTime.Now;
         public DateTime CurrTime
         {
