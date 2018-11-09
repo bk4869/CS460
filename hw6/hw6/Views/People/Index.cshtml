@@ -1,0 +1,43 @@
+﻿@model IEnumerable<hw6.Models.People>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">Client Search</h2>
+
+@using (Html.BeginForm("Index", "People", FormMethod.Get, new { @class = "form-inline", style = "text-align:center;" }))
+{
+    <div class="form-group" >
+        <div class="input-group " style="text-align:center;">
+            @Html.TextBox("searchBar", "", new { @class = "form-control", @placeholder = "Search by client name", required = "required" })
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit">Button</button>
+            </div>
+        </div>
+    </div>
+}
+
+
+    <div class="row">
+        <br />
+        <br />
+        @if (ViewBag.display)
+        {
+            if (ViewBag.isValid <= 0)
+            {
+                <div class="col-lg-12" style="border-style: solid; border-color: orangered">
+                    <p>I am sorry. Can't find this person! Maybe try different name?</p>
+                </div>
+            }
+            else
+            {
+                foreach (var people in Model)
+                {
+                    <div class="col-lg-4 text-center" style="border-left: 6px solid red; background-color: lightgrey;">
+                        <a class="btn btn-light" href="#" role="button">@people.FullName</a>
+                    </div>
+                }
+
+            }
+        }
+    </div>

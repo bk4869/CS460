@@ -159,7 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +180,7 @@
     <Compile Include="Models\CustomerTransactions.cs" />
     <Compile Include="Models\DeliveryMethods.cs" />
     <Compile Include="Models\DeliveryMethods_Archive.cs" />
+    <Compile Include="Models\FrontViewModel\FEViewModel.cs" />
     <Compile Include="Models\InvoiceLines.cs" />
     <Compile Include="Models\Invoices.cs" />
     <Compile Include="Models\OrderLines.cs" />
@@ -267,10 +268,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
