@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    @using (Html.BeginForm("", "", FormMethod.Post, new { id = 0, @class = "myForm" }))
+    {
+        <div class="form-group">
+            @Html.TextBox("text-input", "", new { @class = "form-control", @PlaceHolder = "Start typing your message here ..." })
+            <button type="button" class="btn-danger" id="clearBtn">Clear All</button>
+        </div>
+
+        <div>
+            <div id="returnView">
+
+            </div>
+        </div>
+    }
+
+    @section JS
+    {
+        <script type="text/javascript" src="/Scripts/trans-ajax.js"></script>
+    }
+
+</div>
