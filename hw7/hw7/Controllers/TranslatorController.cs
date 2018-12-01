@@ -6,11 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using hw7.Models;
 
 namespace hw7.Controllers
 {
     public class TranslatorController : Controller
     {
+        private RequestLogModel db = new RequestLogModel(); 
+
         // GET: Translator
         public ActionResult Index()
         {
@@ -38,10 +41,20 @@ namespace hw7.Controllers
             var jsonSerialize = new System.Web.Script.Serialization.JavaScriptSerializer();
             var jsonObj = jsonSerialize.DeserializeObject(convString);
 
+            //DB Works
+            var dbCon = db.RLModel.Create();
+            dbCon.TimeNow = DateTime.Now;
+            dbCon.Request = userInput;
+            dbCon.IP = Request.UserHostAddress;
+            dbCon.BrowserType = Request.UserAgent;
+            db.RLModel.Add(dbCon);
+            db.SaveChanges();
+
             data.Close();
             getResponse.Close();
 
             return Json(jsonObj, JsonRequestBehavior.AllowGet);
         }
+
     }
 }

@@ -72,6 +72,10 @@
             $('#returnView').append("!Error!");
         }
 
+        $('#clearBtn').click(function () {
+            location.reload();
+        });
+
 
 
     });
