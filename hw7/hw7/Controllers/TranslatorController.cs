@@ -34,12 +34,12 @@ namespace hw7.Controllers
 
             Stream data = apiRequest.GetResponse().GetResponseStream();
 
-            string convString = new StreamReader(data).ReadToEnd();
+            string conStr = new StreamReader(data).ReadToEnd();
 
             //string convString = apiURL;
 
             var jsonSerialize = new System.Web.Script.Serialization.JavaScriptSerializer();
-            var jsonObj = jsonSerialize.DeserializeObject(convString);
+            var jsonObj = jsonSerialize.DeserializeObject(conStr);
 
             //DB Works
             var dbCon = db.RLModel.Create();
