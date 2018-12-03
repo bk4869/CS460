@@ -38,8 +38,8 @@ namespace hw7.Controllers
 
             //string convString = apiURL;
 
-            var jsonSerialize = new System.Web.Script.Serialization.JavaScriptSerializer();
-            var jsonObj = jsonSerialize.DeserializeObject(conStr);
+            var serialize = new System.Web.Script.Serialization.JavaScriptSerializer();
+            var jsonObj = serialize.DeserializeObject(conStr);
 
             //DB Works
             var dbCon = db.RLModel.Create();
