@@ -8,22 +8,21 @@ namespace hw8.Models
     public partial class AuctionHouseContext : DbContext
     {
         public AuctionHouseContext()
-            : base("name=AuctionHouseContext2")
+            : base("name=AuctionHouseContext")
         {
         }
 
         public virtual DbSet<Bid> Bid { get; set; }
         public virtual DbSet<Buyer> Buyer { get; set; }
-        public virtual DbSet<BuyerBid> BuyerBid { get; set; }
         public virtual DbSet<Item> Item { get; set; }
         public virtual DbSet<Seller> Seller { get; set; }
-        public virtual DbSet<SellerItem> SellerItem { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Buyer>()
-                .HasMany(e => e.BuyerBid)
-                .WithRequired(e => e.Buyer)
+                .HasMany(e => e.Bid1)
+                .WithRequired(e => e.Buyer1)
+                .HasForeignKey(e => e.Buyer)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Item>()
@@ -32,19 +31,10 @@ namespace hw8.Models
                 .HasForeignKey(e => e.Item)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Item>()
-                .HasMany(e => e.BuyerBid)
-                .WithRequired(e => e.Item)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Item>()
-                .HasMany(e => e.SellerItem)
-                .WithRequired(e => e.Item)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Seller>()
-                .HasMany(e => e.SellerItem)
-                .WithRequired(e => e.Seller)
+                .HasMany(e => e.Item)
+                .WithRequired(e => e.Seller1)
+                .HasForeignKey(e => e.Seller)
                 .WillCascadeOnDelete(false);
         }
     }

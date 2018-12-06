@@ -12,7 +12,7 @@ namespace hw8.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Buyer()
         {
-            BuyerBid = new HashSet<BuyerBid>();
+            Bid1 = new HashSet<Bid>();
         }
 
         [Key]
@@ -23,6 +23,6 @@ namespace hw8.Models
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BuyerBid> BuyerBid { get; set; }
+        public virtual ICollection<Bid> Bid1 { get; set; }
     }
 }

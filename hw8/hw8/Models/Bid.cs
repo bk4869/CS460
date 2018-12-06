@@ -13,13 +13,13 @@ namespace hw8.Models
 
         public int Item { get; set; }
 
-        [Required]
-        [StringLength(30)]
-        public string Buyer { get; set; }
+        public int Buyer { get; set; }
 
         public int Price { get; set; }
 
-        public DateTime TimeStamp { get; set; }
+        public DateTime Timestamp { get; set; }
+
+        public virtual Buyer Buyer1 { get; set; }
 
         public virtual Item Item1 { get; set; }
     }

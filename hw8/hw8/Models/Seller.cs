@@ -12,17 +12,17 @@ namespace hw8.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Seller()
         {
-            SellerItem = new HashSet<SellerItem>();
+            Item = new HashSet<Item>();
         }
 
         [Key]
         public int SID { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(20)]
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SellerItem> SellerItem { get; set; }
+        public virtual ICollection<Item> Item { get; set; }
     }
 }
