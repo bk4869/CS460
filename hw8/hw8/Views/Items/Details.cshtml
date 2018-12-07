@@ -36,7 +36,38 @@
 
     </dl>
 </div>
+
+<input type="hidden" id="iid" value='@Model.IID' />
+
+
+<div class="container">
+
+    <div class="col-md-6">
+        <h3>Bids History</h3>
+        <table class="table" id="returnTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Buyer")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Bid Price")
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="bids"></tbody>
+        </table>
+
+    </div>
+    <p id="error"></p>
+</div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.IID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section js
+{
+    <script type="text/javascript" src="~/Scripts/showBids.js"></script>
+}

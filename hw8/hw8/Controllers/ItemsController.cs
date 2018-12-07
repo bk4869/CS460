@@ -14,6 +14,14 @@ namespace hw8.Controllers
     {
         private AuctionHouseContext db = new AuctionHouseContext();
 
+
+        public ActionResult Home()
+        {
+            var myBid = db.Bid.Take(10).OrderByDescending(m => m.Timestamp);
+
+            return View(myBid);
+        }
+
         // GET: Items
         public ActionResult Index()
         {

@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using hw8.Models;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+
 
 namespace hw8.Controllers
 {
@@ -80,6 +83,28 @@ namespace hw8.Controllers
             ViewBag.Item = new SelectList(db.Item, "IID", "Name", bid.Item);
             return View(bid);
         }
+
+        public JsonResult BidFinder(int? id)
+        {
+            var targetItem = db.Item.Find(id);
+            
+
+            if(targetItem.Bid.Count() > 0)
+            {
+                var results = db.Item.SelectMany(m => m.Bid)
+                              .Where(m => m.Item == id)
+                              .OrderBy(m => m.Timestamp)
+                              .ToList();
+                string jsonRes = JsonConvert.SerializeObject(results);
+
+                return Json(jsonRes, JsonRequestBehavior.AllowGet);
+
+            }else
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+        }
+
 
         protected override void Dispose(bool disposing)
         {

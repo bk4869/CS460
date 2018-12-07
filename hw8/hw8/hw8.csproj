@@ -157,7 +157,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BidsController.cs" />
     <Compile Include="Controllers\BuyersController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\SellersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,6 +195,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\showBids.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -208,9 +208,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Buyers\Create.cshtml" />
     <Content Include="Views\Buyers\Delete.cshtml" />
     <Content Include="Views\Buyers\Details.cshtml" />
@@ -229,6 +226,7 @@
     <Content Include="Views\Items\Details.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\Items\Home.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

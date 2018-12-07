@@ -1,0 +1,85 @@
+﻿@model IEnumerable<hw8.Models.Bid>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>REGINALD'S ANCIENT ANTIQUITIES AUCTION HOUSE</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+
+    <br />
+
+    <div class="container">
+        <h3>Current Biding Table</h3>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("Item ID")
+                </th>
+                <th>
+                    @Html.DisplayName("Bider")
+                </th>
+                <th>
+                    @Html.DisplayName("Item")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayName("Biding Time")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Item1.IID)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Buyer1.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Item1.Name)
+                    </td>
+                    <td>
+                        @String.Format("{0:c}", item.Price)
+                    </td>
+                    <td>
+                        @if (item.Timestamp.Date == DateTime.Now.Date)
+                        {
+                            @String.Format("{0:h:m:ss tt}", item.Timestamp);
+                        }
+                        else
+                        {
+                            @String.Format("{0:M/d/yyyy}", item.Timestamp);
+                        }
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+
+
+</div>
